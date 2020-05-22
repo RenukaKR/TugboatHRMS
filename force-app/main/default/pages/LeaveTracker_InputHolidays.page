@@ -1,0 +1,27 @@
+<apex:page standardController="Vacation__c" extensions="LeaveTracker_InputHolidays">
+    <apex:form >
+    <apex:pageBlock title="Holidays Quick Entry" >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" rerender="error" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!holsLst}" var="a" id="table">
+                <apex:column headerValue="Vacation Name">
+                    <apex:inputField value="{!a.Vacation_Name__c}"/>
+                </apex:column>               
+                <apex:column headerValue="Date">
+                    <apex:inputField value="{!a.Holiday_Date__c}"/>
+                </apex:column>
+                <apex:column headerValue="Employee">
+                    <apex:inputField value="{!a.Employee__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+    <apex:pageblockButtons location="bottom">
+        <div style="text-align:right;margin-right:30px;font-weight:bold;">
+            <apex:commandLink value="Add Row" action="{!addRow}" rerender="table,error" immediate="true" />
+&nbsp;|&nbsp;&nbsp;
+            <apex:commandLink value="Remove Row" action="{!removeRow}" rerender="table,error" immediate="true" />               
+        </div>
+    </apex:pageblockButtons> 
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

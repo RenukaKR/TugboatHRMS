@@ -1,0 +1,76 @@
+<aura:component controller="EmployeeLeaves" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="employee" type="String" />
+    <aura:attribute name="availedCasualLeave" type="Integer" />
+    <aura:attribute name="availableCasualLeave" type="Integer" />
+    <aura:attribute name="availedSickLeave" type="Integer" />
+    <aura:attribute name="availableSickLeave" type="Integer" />
+<!-- For Spinner -->
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <!-- \end Spinner -->
+    <lightning:card title="Employee Leaves" iconName="action:new_contact">
+    <div class="slds-grid slds-wrap slds-p-vertical_small slds-border_top">
+        <div class="c-container">
+        <lightning:layout >
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Employee">Employee</p>
+                    <p>
+                    <aura:if isTrue="{!v.employee}"> 
+							{!v.employee}
+                        	<aura:set attribute="else">-</aura:set>
+                   	</aura:if>
+                    </p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Availed Casual Leave">Availed Casual Leave</p>
+                    <p>
+                    <aura:if isTrue="{!v.availedCasualLeave}"> 
+							{!v.availedCasualLeave}
+                        	<aura:set attribute="else">-</aura:set>
+                    </aura:if>
+                    </p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Available Casual Leave">Available Casual Leave</p>
+                    <p>
+                    <aura:if isTrue="{!v.availableCasualLeave}"> 
+							{!v.availableCasualLeave}
+                        	<aura:set attribute="else">-</aura:set>
+                    </aura:if>
+                    </p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Availed Sick Leave">Availed Sick Leave</p>
+                    <p>
+                     <aura:if isTrue="{!v.availedSickLeave}"> 
+							{!v.availedSickLeave}
+                        	<aura:set attribute="else">-</aura:set>
+                     </aura:if>
+                    </p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Available Sick Leave">Available Sick Leave</p>
+                    <p>
+                     <aura:if isTrue="{!v.availableSickLeave}"> 
+							{!v.availableSickLeave}
+                        	<aura:set attribute="else">-</aura:set>
+                     </aura:if>
+                    </p>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+  </div>    
+  </lightning:card>
+</aura:component>

@@ -1,0 +1,47 @@
+<aura:component controller="VacationLeaves" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:attribute name="Name" type="String" />
+    <aura:attribute name="data" type="List"/>
+    <aura:attribute name="columns" type="List"/>	
+    <aura:attribute name="loaded" type="Boolean" default ="false"/>
+    <aura:attribute name="recId" type="String"/>
+
+    <aura:if isTrue="{! v.loaded }">
+        <lightning:spinner alternativeText="Loading" variant="brand"/>
+    </aura:if>  
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title="">
+                            <lightning:icon iconName="custom:custom67" size="small"/>
+                            <span class="slds-assistive-text"> Leaves History </span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h6>
+                                    <span class="slds-page-header__title slds-truncate" title="Leaves History">Leaves History</span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+                
+     </div>
+     <div class="slds-p-horizontal_small slds-box slds-scrollable" style="height:45vh;">
+        <lightning:datatable
+                             keyField = "Id"
+                             data = "{! v.data}"
+                             columns = "{! v.columns }"
+			     />
+     		
+     </div>
+</aura:component>
